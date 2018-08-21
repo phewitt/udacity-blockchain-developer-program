@@ -30,4 +30,4 @@ npm install level --save
 To test code:
 1: Open a command prompt or shell terminal after install node.js.
 
-2: run `node simpleChain.js` which will run the test at the end of the file
+2: run `node test.js` which will run the test at the end of the file
