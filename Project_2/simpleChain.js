@@ -1,5 +1,5 @@
 const SHA256 = require('crypto-js/sha256');
-const{ levelDBService } = require('./levelSandbox.js');
+const{ levelDBService } = require('./levelDBService.js');
 
 class Block{
   constructor(data){
