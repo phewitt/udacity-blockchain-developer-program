@@ -4,7 +4,7 @@
 
 const level = require('level');
 
-class levelDBService{
+class LevelDBService{
   // Set database path for this levelDBService 
   constructor(DBPath){
     this.db = level(DBPath);
@@ -46,4 +46,4 @@ class levelDBService{
   }
 }
 
-module.exports.levelDBService = levelDBService;
+module.exports.LevelDBService = LevelDBService;

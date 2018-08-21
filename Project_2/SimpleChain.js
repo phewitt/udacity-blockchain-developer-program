@@ -1,19 +1,10 @@
 const SHA256 = require('crypto-js/sha256');
-const{ levelDBService } = require('./levelDBService.js');
-
-class Block{
-  constructor(data){
-    this.hash = "",
-    this.height = 0,
-    this.body = data,
-    this.time = 0,
-    this.previousBlockHash = ""
-  }
-}
+const{ LevelDBService } = require('./LevelDBService.js');
+const { Block } = require('./Block.js');
 
 class Blockchain{
   constructor(){
-    this.DB = new levelDBService('./chaindata')
+    this.DB = new LevelDBService('./chaindata')
 
     this.getBlockHeight().then((height) => {
       if (height === -1){
@@ -24,6 +15,7 @@ class Blockchain{
 
   async addBlock(newBlock){
     let currentBlockHeight = await this.getBlockHeight();
+    console.log(newBlock);
     newBlock.height = currentBlockHeight + 1;
     newBlock.time = new Date().getTime().toString().slice(0,-3);
 
@@ -95,19 +87,4 @@ class Blockchain{
   }
 }
 
-// ---------------TESTING ABOVE FUNCTIONALITY ------------------//
-let blockchain = new Blockchain();
-const TIMES_TO_LOOP = 50;
-
-(function theLoop (i) {
-  setTimeout(() => {
-    blockchain.addBlock(new Block(SHA256(`Data ${i}`).toString())).then(() => {
-      if (--i) {
-        theLoop(i)
-      }
-      else{
-        blockchain.validateChain();
-      }
-    })
-  }, 100);
-})(TIMES_TO_LOOP);
+module.exports.Blockchain = Blockchain;
