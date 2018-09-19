@@ -13,3 +13,7 @@ Simple blockchain wrapped with a small express API.
 
 - Post /block
     - returns the block placed in the DB or an error
+
+## Resources
+
+- found a nice [post](https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters) with good examples
